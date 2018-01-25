@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Google Map</h1>
+
+<select onchange="getmap(this)">
+  <option value="losangeles">Los Angeles</option>
+  <option value="orlando">Orlando</option>
+  <option value="milwaukee">Milwaukee</option>
+  <option value="nyc">NYC</option>
+</select>
+</br>
+</br>
+
+<div id="map" style="width:400px;height:400px;background:yellow"></div>
+
+<script>
+function myMap(lat, lng) {
+  if(lat == null){
+    lat =34.0522
+  }
+  if(lng == null){
+    lng =-118.2437
+  }
+  var mapCanvas = document.getElementById("map");
+  var la = new google.maps.LatLng(34.0522, -118.2437);
+
+
+
+  var mapOptions = {
+    center: new google.maps.LatLng(lat, lng), zoom: 10, mapTypeId: 'satellite'
+
+  };
+
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: la,
+      map :map
+  });
+
+}
+
+function getmap(e){
+  if (e.value == "losangeles")
+      myMap(34.0522, -118.2437);
+    else if (e.value == "orlando") {
+      myMap(28.5383, -81.3792);
+    }else if (e.value == "milwaukee") {
+      myMap(43.0389, -87.9065);
+    }else if (e.value == "nyc"){
+      myMap(40.7128, -74.0060)
+    }
+  }
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD6fdo_VuFGpX-plfkIlf9Dudu3hJV4CY&callback=myMap"></script>
+
+
+
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+<!-- Done by Luke Hiatt 1/18/2018-->
+
+</body>
+</html>
